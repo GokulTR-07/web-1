@@ -9,16 +9,23 @@ import jwt from "jsonwebtoken"
 const app = express();
 dotenv.config();
 
-const allowedOrigins = ['https://web1-client.vercel.app/'];
+// const allowedOrigins = ['https://web1-client.vercel.app/'];
+// app.use(cors({
+//   origin: (origin, callback) => {
+//     if (allowedOrigins.includes(origin) || !origin) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error('Not allowed by CORS'));
+//     }
+//   },
+//   credentials: true, // Enable credentials
+// }));
+
+// Allow requests from your Vercel frontend
 app.use(cors({
-  origin: (origin, callback) => {
-    if (allowedOrigins.includes(origin) || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true, // Enable credentials
+  origin: 'https://web1-client.vercel.app', // Your Vercel domain
+  methods: 'GET,POST,PUT,DELETE',
+  credentials: true
 }));
 
 // middleware
