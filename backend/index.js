@@ -9,7 +9,7 @@ import jwt from "jsonwebtoken"
 const app = express();
 dotenv.config();
 
-const allowedOrigins = ['http://localhost:5173/'];
+const allowedOrigins = ['https://web1-client.vercel.app/'];
 app.use(cors({
   origin: (origin, callback) => {
     if (allowedOrigins.includes(origin) || !origin) {
